@@ -1,9 +1,9 @@
-import { CheckCircle, CircleDashed, ListFilter } from "lucide-react";
+import { CheckCircle, CircleDashed, ListFilter, List } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function FilterBar({ filter, setFilter, theme }) {
     const btnBase =
-        "px-4 py-2 rounded-xl font-medium transition-all border active:scale-[0.97]";
+        "px-4 py-1 rounded-xl font-medium transition-all border active:scale-[0.97]";
 
     const commonLight = "bg-white/70 border-slate-200 text-slate-700 hover:bg-white";
     const commonDark = "bg-slate-900/40 border-white/10 text-slate-300 hover:bg-slate-900/60";
@@ -35,23 +35,31 @@ export default function FilterBar({ filter, setFilter, theme }) {
                     : "bg-white/70 border border-slate-200",
             ].join(" ")}
         >
-            <ListFilter size={18} className={isDark ? "text-slate-300" : "text-slate-600"} />
+            <ListFilter
+                size={18}
+                className={`hidden md:inline-block ${isDark ? "text-slate-300" : "text-slate-600"}`}
+            />
 
-            <button onClick={() => setFilter("all")} className={`${btnBase} ${styles.all} cursor-pointer`}>
-                All
+
+            <button
+                onClick={() => setFilter("all")}
+                className={`${btnBase} ${styles.all} cursor-pointer flex items-center justify-center`}
+            >
+                <List size={16} className="inline-block mr-1" />
+                <span className="text-[12px] md:text-[16px]">All</span>
             </button>
 
-            <button onClick={() => setFilter("active")} className={`${btnBase} ${styles.active} cursor-pointer`}>
+            <button onClick={() => setFilter("active")} className={`${btnBase} ${styles.active} cursor-pointer flex items-center justify-center`}>
                 <CircleDashed size={16} className="inline-block mr-1" />
-                Active
+                <span className="text-[12px] md:text-[16px]">Pending</span>
             </button>
 
             <button
                 onClick={() => setFilter("completed")}
-                className={`${btnBase} ${styles.completed} cursor-pointer`}
+                className={`${btnBase} ${styles.completed} cursor-pointer flex items-center justify-center`}
             >
                 <CheckCircle size={16} className="inline-block mr-1" />
-                Completed
+                <span className="text-[12px] md:text-[16px]">Completed</span>
             </button>
         </motion.div>
     );

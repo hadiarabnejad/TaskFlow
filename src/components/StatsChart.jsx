@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
 
 export default function StatsChart({ todos }) {
     const completed = todos.filter(t => t.completed).length;
@@ -12,13 +12,13 @@ export default function StatsChart({ todos }) {
     if (todos.length === 0) return null;
 
     return (
-        <div className="h-40 w-full flex items-center justify-center bg-white/5 dark:bg-slate-800/50 rounded-2xl p-4 mb-6 border border-slate-200 dark:border-slate-700/50">
+        <div className="h-60 w-full flex items-center justify-center bg-white/5 dark:bg-slate-800/50 rounded-2xl p-4 mb-6 border border-slate-200 dark:border-slate-700/50">
             <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                     <Pie
                         data={data}
-                        innerRadius={30}
-                        outerRadius={50}
+                        innerRadius={40}
+                        outerRadius={60}
                         paddingAngle={5}
                         dataKey="value"
                     >
@@ -26,7 +26,17 @@ export default function StatsChart({ todos }) {
                             <Cell key={`cell-${index}`} fill={entry.color} />
                         ))}
                     </Pie>
-                    <Tooltip contentStyle={{ borderRadius: '10px', border: 'none' }} />
+
+                    <Tooltip contentStyle={{ borderRadius: '5px', border: '#000', background: '#fff', fontSize: '13px' }} />
+                    <Legend
+                        verticalAlign="bottom"
+                        align="left"
+                        iconType="circle"
+                        iconSize={10}
+                        wrapperStyle={{
+                            fontSize: '13px',
+                        }}
+                    />
                 </PieChart>
             </ResponsiveContainer>
 

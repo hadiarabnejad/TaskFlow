@@ -135,14 +135,12 @@ export default function App() {
       }
     >
       {/* Soft background glow */}
-      <div
-        aria-hidden="true"
+      <div aria-hidden="true"
         className={
           theme === "dark"
             ? "pointer-events-none fixed inset-0 -z-10 opacity-90 bg-[radial-gradient(60%_50%_at_50%_0%,rgba(99,102,241,0.22),transparent_60%),radial-gradient(40%_40%_at_20%_20%,rgba(16,185,129,0.14),transparent_55%)]"
             : "pointer-events-none fixed inset-0 -z-10 opacity-100 bg-[radial-gradient(50%_50%_at_50%_0%,rgba(79,70,229,0.10),transparent_60%),radial-gradient(40%_40%_at_10%_20%,rgba(16,185,129,0.08),transparent_55%)]"
-        }
-      />
+        } />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         {/* Header */}
@@ -162,7 +160,7 @@ export default function App() {
             onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
             className={[
               "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-3",
-              "border transition-all shadow-sm active:scale-[0.98]",
+              "border transition-all shadow-sm active:scale-[0.98] cursor-pointer",
               theme === "dark"
                 ? "bg-slate-900/60 border-white/10 hover:border-indigo-300/30 hover:bg-slate-900/70"
                 : "bg-white/70 border-slate-200 hover:border-indigo-200 hover:bg-white",
@@ -303,8 +301,8 @@ export default function App() {
             </span>
           </p>
         </footer>
-
       </div>
+      
     </div>
   );
 }
